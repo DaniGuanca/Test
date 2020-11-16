@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+    <link rel="stylesheet" href="../static/aplicacion/dist/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Prueba</h1>
+    </header>
+ 
+    <main>
+
+        <!-- PRODUCTOS -->
+        <section class="Section">
+            <h2>Products</h2>
+            <!-- Modal con formulario de productos -->
+            <div id="productModal" class="modal">
+                <div class="modal-content">
+                    <span id="closeProductModal" class="modal-close">&times;</span>
+                    <article>
+                        <h2 class="product-crud-title">Agregar Producto</h2>
+                        <form action="" class="product-crud-form">
+                            {% csrf_token %}
+                            <b>Id</b>
+                            <input type="text" name="idProduct" placeholder="Ingrese un id" required>
+                            <b>Nombre</b>
+                            <input type="text" name="nameProduct" placeholder="Ingrese un nombre" required>
+                            <b>Precio</b>
+                            <input type="text" name="priceProduct" placeholder="Ingrese el precio" required>
+                            <input type="submit" value="Guardar">
+                            <input type="hidden" name="urlProduct">
+                        </form>
+                    </article>
+                </div>
+            </div>            
+
+            <!-- TABLA BASE DE PRODUCTOS -->
+            <article>
+                <button id="btn-add-product">Agregar Producto</button>
+                <table class="product-crud-table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </article>
+
+            <!-- Template con el contenido de un objeto de la tabla -->
+            <template id="product-crud-template">
+                <tr>
+                    <td class="id"></td>
+                    <td class="name"></td>
+                    <td class="price"></td>
+                    <td>
+                        <button class="btnEditProduct">Editar</button>
+                        <button class="btnDeleteProduct">Eliminar</button>
+                    </td>
+                </tr>
+            </template>
+        </section>
+
+        <!-- MODAL DELETE Y MODAL AGREGAR DETALLES-->
+        <section class="Section">
+            <!-- Modal delete-->
+            <div id="deleteModal" class="modal delete">
+                <div class="modal-content delete">
+                    <span id="closeDeleteModal" class="modal-close">&times;</span>                    
+                    <h2 class="delete-modal-title">Delete</h2>
+                    <b><p class="delete-modal-question"></p></b>
+                    <button id="deleteConfirm">Confirmar</button>
+                    <button id="deleteCancel">Cancelar</button>
+                </div>
+            </div>
+
+            <!--Modal agregar detalles-->
+            <div id="addDetailModal" class="modal addDetail">
+                <div class="modal-content">
+                    <span id="closeAddDetailModal" class="modal-close">&times;</span> 
+                    <articlle>
+                        <h2 class="addDetail-modal-title">Agregar producto a orden</h2>
+                        <form action="" class="create-detailOrder-form">
+                            {% csrf_token %}
+                            Nombre de Producto
+                            <input type="text" name="productName" placeholder="Ingrese el producto" required>
+                            Cantidad
+                            <input type="text" name="cuantity" placeholder="Ingrese una cantidad" required>   
+                            <input type="hidden" name="idOrderDetail">
+                            <input type="hidden" name="urlOrderDetail">
+                            <button class="btnCancelAddDetailOrder">Cancelar</button>
+                            <input type="submit" value="Agregar">
+                            <input type="hidden" name="urlOrder">
+                        </form>
+                    </articlle>
+                </div>
+            </div>
+        </section>
+
+        <!--ORDENES-->
+        <section class="Section">
+            <h2>Orders</h2>
+
+            <!--Tabla base de ordenes-->
+            <article>
+                <button id="btn-add-order">Agregar Orden</button>
+                <table class="order-crud-table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </article>
+
+            <!--Template que corresponde a un objeto de tabla orden-->
+            <template id="order-crud-template">
+                <tr>
+                    <td class="id"></td>
+                    <td class="date"></td>
+                    <td class="total"></td>
+                    <td>
+                        <button class="btnOrderDetail">Detalles</button>
+                    </td>
+                </tr>
+            </template>
+
+            <!--Template que corresponde al detalle de un producto de una orden-->
+            <template id="order-details-template">
+                <hr size="6" color="black">
+                <b>Nombre del Producto</b>
+                <input type="text" class="product" disabled>
+                <b>Precio del Producto</b>
+                <input type="text" class="product-price" disabled>
+                <b>Cantidad</b>
+                <input type="text" class="cuantity" disabled>
+                <b>Precio del Pedido</b>
+                <input type="text" class="price" disabled>    
+                <input type="hidden" class="idOrderDetail">
+                <input type="hidden" class="urlOrderDetail">
+                <input type="button" class="btnDeleteOrderDetail" value="Quitar Producto">
+            </template>
+
+            <!--Modal con formulario para ordenes-->
+            <div id="orderModal" class="modal">
+                <div class="modal-content">
+                    <span id="closeOrderModal" class="modal-close">&times;</span>
+                    <article>
+                        <h2 class="order-crud-title">Detalles de Orden</h2>
+                        <form action="" class="order-crud-form">
+                            {% csrf_token %}
+                            <b>Id</b>
+                            <input type="text" name="idOrder" required disabled>
+                            <b>Fecha</b>
+                            <input type="datetime-local" name="dateOrder" placeholder="Ingrese una fecha" required disabled>
+                            <section>
+                                <b>Acciones</b>
+                                <input type="button" class="btnEditOrder" value="Editar">
+                                <input type="button" class="btnDeleteOrder" value="Eliminar">
+                            </section>
+                            <p><b>Total: <div id="orderTotal"></div></b></p>
+                            <b>Detalles Orden</b>
+                            <input type="button" class="btnAddProductOrder" value="Agregar Producto">
+                            <div class="orderDetails">
+
+                            </div>
+                            <hr size="6" color="black">
+                            <button class="btnCancelOrderModal">Cancelar</button>
+                            <input type="submit" value="Guardar">
+                            <input type="hidden" name="urlOrder">
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </section>    
+
+    </main>
+
+    <script src="../static/aplicacion/dist/js/index.js"></script>
+    
+</body>
+</html>
