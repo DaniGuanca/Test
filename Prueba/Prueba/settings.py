@@ -26,7 +26,7 @@ SECRET_KEY = 'g#dh%a=(o+(36k6f8%psstuql&0tzjdr$%6b32ws5w((a2t9iu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserializer.herokuapp.com']
 
 
 # Application definition
