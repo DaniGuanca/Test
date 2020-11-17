@@ -479,7 +479,7 @@ document.addEventListener("click", async e =>{
                 $orderCrudTittle.innerHTML = "Detalles de la Orden";
                 $orderForm.querySelector(".btnAddProductOrder"). disabled = false;
 
-            }, 50);
+            }, 100);
             
         } catch (error) {
             let message = error.statusText || 'Ocurrio un error';
