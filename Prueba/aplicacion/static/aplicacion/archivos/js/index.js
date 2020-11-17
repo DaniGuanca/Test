@@ -445,11 +445,11 @@ document.addEventListener("click", async e =>{
                     $orderDetailTemplate.querySelector(".btnDeleteOrderDetail").dataset.url = element.url;
 
                     products.forEach(product => {
-                        console.log("url element", element.product);
-                        console.log("url producto", product.url);
+                            $orderDetailTemplate.querySelector(".product").value = element.product;
+                            $orderDetailTemplate.querySelector(".product-price").value = product.url;
                         if(element.product == product.url){
-                            $orderDetailTemplate.querySelector(".product").value = product.name;
-                            $orderDetailTemplate.querySelector(".product-price").value = product.price;
+                            //$orderDetailTemplate.querySelector(".product").value = product.name;
+                            //$orderDetailTemplate.querySelector(".product-price").value = product.price;
                         }
                     });    
     
