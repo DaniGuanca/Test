@@ -1,0 +1,299 @@
+:root {
+  --main-font: sans-serif;
+  --font-size: 16px;  
+  --main-color: darkorchid;
+  --second-color: rgb(32, 32, 32);
+  --container-width: 1200px;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--main-font);
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin : 0;
+  overflow-x: hidden;
+  background: linear-gradient(to top, #d3cce3, #e9e4f0);
+}
+
+.header {
+  position: sticky;
+  z-index: 997;
+  top: 0;
+  padding: 1rem;
+  background: linear-gradient(to bottom, #6a3093, #a044ff);
+  color: var(--second-color);
+}
+
+.header h1 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: #474544;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.Section {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: var(--container-width);
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 20%;
+}
+
+thead th:nth-child(2) {
+  width: 30%;
+}
+
+thead th:nth-child(3) {
+  width: 25%;
+}
+
+thead th:nth-child(4) {
+  width: 25%;
+}
+
+th, td {
+  padding: 1px;
+}
+
+thead, tfoot {
+  background: var(--main-color);
+  color: rgb(235, 188, 221);
+  text-shadow: 1px 1px 1px black;
+}
+
+thead th, tfoot th, tfoot td {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  border: 3px solid purple;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tfoot th {
+  text-align: right;
+}
+
+th, td {
+  border-bottom: 1px solid var(--main-color);
+  border-right: 1px solid var(--main-color);
+}
+
+table {
+  background: linear-gradient(to bottom, #d3cce3, #e9e4f0);
+}
+
+
+button, input[type="submit"], input[type="button"] {
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px;
+  min-width: 80px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button, input[type="submit"], input[type="button"]{
+  background-color: #1e8df4;
+}
+
+.btnEditProduct{
+  background-color: #1b9b16;
+}
+
+.btnDeleteProduct{
+  background-color: #f4511e;
+}
+
+#deleteConfirm, #deleteCancel{
+  background-color: #2b2b2b;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btnDeleteProduct span:after {
+content: '\00bb'; 
+position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btnOrderDetail span:after {
+  content: '\00bb'; 
+  position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btnEditProduct span:after {
+  content: '\00bb'; 
+  position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 25px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1030;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.modal.delete,
+.modal.addDetail {
+  z-index: 1050;
+}
+
+.modal.delete {
+  color: white;
+}
+
+.modal.delete h2 {
+  color: white;
+}
+  
+.modal-content {
+  background: linear-gradient(to bottom, #abbaab, #ffffff);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+  
+.modal-content.delete {
+  background: linear-gradient(to bottom, #333333, #dd1818);
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+  
+.modal-close:hover,
+.modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+
+input {
+  color: #5A5A5A;
+  font: inherit;
+  margin: 5px;
+}
+
+input {
+  line-height: normal;
+}
+
+form {
+  padding: 5px;
+  margin: 15px 0;
+}
+
+input[type='text'] {
+	background: none;
+  border: none;
+	border-bottom: solid 2px #474544;
+	color: #474544;
+	font-size: 1.000em;
+  font-weight: 400;
+  letter-spacing: 1px;
+	margin: 0em 0 1.875em 0;
+	padding: 0 0 0.875em 0;
+	width: 100%;
+	box-sizing: border-box;
+	transition: all 0.3s;
+}
+
+input[type='text']:focus {
+	outline: none;
+	padding: 0 0 0.875em 0;
+}
+
+input:disabled {
+  background-color: #b8b7b7;
+  color: black;
+}
