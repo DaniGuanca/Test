@@ -444,13 +444,10 @@ document.addEventListener("click", async e =>{
                     $orderDetailTemplate.querySelector(".urlOrderDetail").value = element.url;
                     $orderDetailTemplate.querySelector(".btnDeleteOrderDetail").dataset.url = element.url;
 
-
                     products.forEach(product => {
-                            $orderDetailTemplate.querySelector(".product").value = element.product;
-                            $orderDetailTemplate.querySelector(".product-price").value = product.url;
                         if(element.product == product.url){
-                            //$orderDetailTemplate.querySelector(".product").value = product.name;
-                            //$orderDetailTemplate.querySelector(".product-price").value = product.price;
+                            $orderDetailTemplate.querySelector(".product").value = product.name;
+                            $orderDetailTemplate.querySelector(".product-price").value = product.price;
                         }
                     });    
     
@@ -480,7 +477,7 @@ document.addEventListener("click", async e =>{
                 $orderCrudTittle.innerHTML = "Detalles de la Orden";
                 $orderForm.querySelector(".btnAddProductOrder"). disabled = false;
 
-            }, 1000);
+            }, 500);
             
         } catch (error) {
             let message = error.statusText || 'Ocurrio un error';
