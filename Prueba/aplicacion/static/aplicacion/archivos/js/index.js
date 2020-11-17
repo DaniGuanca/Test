@@ -40,7 +40,7 @@ let usedProducts = [];
 //READ DE PRODUCTOS
 const getProducts = async () => {
     try {
-        let response = await fetch("http://127.0.0.1:8000/requests/products/");
+        let response = await fetch("https://testserializer.herokuapp.com/requests/products/");
         let json = await response.json();
 
         if(!response.ok) throw {status: response.status, statusText: response.statusText};
@@ -74,7 +74,7 @@ const getProducts = async () => {
 //READ DE ORDENES
 const getOrders = async () => {
     try {
-        let response = await fetch("http://127.0.0.1:8000/requests/orders/");
+        let response = await fetch("https://testserializer.herokuapp.com/requests/orders/");
         let json = await response.json();
 
         if(!response.ok) throw {status: response.status, statusText: response.statusText};
@@ -126,7 +126,7 @@ document.addEventListener("submit", async e =>{
                         "price" : e.target.priceProduct.value
                     })
                 };
-                let response = await fetch("http://127.0.0.1:8000/requests/products/", options);
+                let response = await fetch("https://testserializer.herokuapp.com/requests/products/", options);
 
                 if(!response.ok) throw response;
 
@@ -193,7 +193,7 @@ document.addEventListener("submit", async e =>{
                         "date_time" : e.target.dateOrder.value
                     })
                 };
-                let response = await fetch("http://127.0.0.1:8000/requests/orders/", options);
+                let response = await fetch("https://testserializer.herokuapp.com/requests/orders/", options);
                 if (!response.ok) throw response;
 
                 window.alert("Operación Exitosa");
@@ -231,7 +231,7 @@ document.addEventListener("submit", async e =>{
     if(e.target === $addDetailForm){
         e.preventDefault();
         try {
-            let response = await fetch("http://127.0.0.1:8000/requests/products/");
+            let response = await fetch("https://testserializer.herokuapp.com/requests/products/");
             let allProducts = await response.json();
             let bandera = false;
 
@@ -272,7 +272,7 @@ document.addEventListener("submit", async e =>{
                     })
                 };           
 
-                response = await fetch ("http://127.0.0.1:8000/requests/orderDetails/", options);
+                response = await fetch ("https://testserializer.herokuapp.com/requests/orderDetails/", options);
                 if (!response.ok) throw response.status;
 
                 window.alert("Operación Exitosa");
@@ -361,7 +361,7 @@ document.addEventListener("click", async e =>{
         //METODO DELETE ORDEN
         if(e.target.dataset.mode == 'order'){
             try {
-                let response = await fetch("http://127.0.0.1:8000/requests/orderDetails/");
+                let response = await fetch("https://testserializer.herokuapp.com/requests/orderDetails/");
                 let json = await response.json();
 
                 let options = {
@@ -414,7 +414,7 @@ document.addEventListener("click", async e =>{
         try {
             let products = [];
 
-            let response = await fetch("http://127.0.0.1:8000/requests/orderDetails/");
+            let response = await fetch("https://testserializer.herokuapp.com/requests/orderDetails/");
             let json = await response.json();
 
             if(!response.ok) throw {status: response.status, statusText: response.statusText}; 
