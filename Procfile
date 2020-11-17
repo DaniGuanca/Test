@@ -1,1 +1,1 @@
-web: gunicorn Prueba/Prueba.wsgi
+web: gunicorn --pythonpath Prueba Prueba.wsgi
