@@ -444,6 +444,7 @@ document.addEventListener("click", async e =>{
                     $orderDetailTemplate.querySelector(".urlOrderDetail").value = element.url;
                     $orderDetailTemplate.querySelector(".btnDeleteOrderDetail").dataset.url = element.url;
 
+
                     products.forEach(product => {
                             $orderDetailTemplate.querySelector(".product").value = element.product;
                             $orderDetailTemplate.querySelector(".product-price").value = product.url;
@@ -479,7 +480,7 @@ document.addEventListener("click", async e =>{
                 $orderCrudTittle.innerHTML = "Detalles de la Orden";
                 $orderForm.querySelector(".btnAddProductOrder"). disabled = false;
 
-            }, 100);
+            }, 1000);
             
         } catch (error) {
             let message = error.statusText || 'Ocurrio un error';
